@@ -329,20 +329,20 @@ let dd = {
               [{
                 margin: [30, 1, 0, 0],
                 border: [true, true, true, false],
-                text: langPdf['salonName'].toUpperCase() + 'Profil Doors'.toUpperCase(),
+                text: langPdf['salonName'].toUpperCase() + langPdf['salonNameValue'].toUpperCase(),
                 fontSize: 8,
               }],
               [{
                 margin: [30, 0, 0, 0],
                 border: [true, false, true, false],
-                text: langPdf['salonAddress'].toUpperCase() + 'г. Москва',
+                text: langPdf['salonAddress'].toUpperCase() + langPdf['salonAddressValue'],
                 fontSize: 8,
               }],
               [{
                 margin: [60, 0, 0, 1],
 
                 border: [true, false, true, true],
-                text: langPdf['salonPhone'].toUpperCase() + '+7(999)999-99-99',
+                text: langPdf['salonPhone'].toUpperCase() + langPdf['salonPhoneValue'],
                 fontSize: 8,
 
               }]
@@ -354,9 +354,9 @@ let dd = {
           fontSize: 8,
           alignment: 'right',
           stack: [
-            langPdf['validityPeriod'].toUpperCase() + '1',
+            langPdf['validityPeriod'].toUpperCase() + jsonPdf['validityPeriod'],
             {
-              text: langPdf['readinessPeriod'].toUpperCase() + '20',
+              text: langPdf['readinessPeriod'].toUpperCase() + jsonPdf['readinessPeriod'],
               margin: [0, 9, 0, 0],
             }
 
@@ -366,7 +366,7 @@ let dd = {
       ]
     },
     {
-      text: langPdf['invoiceSpecification'].toUpperCase() + 'PDT-15/07/22-1839-0'.toUpperCase(),
+      text: langPdf['invoiceSpecification'].toUpperCase() + jsonPdf['invoiceSpecification'].toUpperCase(),
       alignment: 'center',
       fontSize: 15,
       bold: true,
@@ -836,8 +836,8 @@ let dd = {
     {
       fontSize: 7,
       stack: [
-        {text: 'Для закладной балки под раздвижную систему , возможно использование деревянного брусса.'},
-        {text: 'Если в помещении запрещенны деревянные строительные конструкции, используйте металический профиль аналогичных параметров '}
+        {text: langPdf['forEmbeddedBeam']},
+        {text: langPdf['ifProhibited']}
       ]
       
     },
@@ -847,37 +847,37 @@ let dd = {
         body: [
           [
             {
-              text: 'Обозначение на плане',
+              text: langPdf['tableOfOpeningsDesignation'],
               margin: 5,
               fontSize: 7.6,
               alignment: 'center',
             },
             {
-              text: 'конструкция',
+              text: langPdf['tableOfOpeningsConstruction'],
               margin: 5,
               fontSize: 7.6,
               alignment: 'center',
             },
             {
-              text: langPdf['openingScheme'],
+              text: langPdf['tableOfOpeningsScheme'],
               margin: 5,
               fontSize: 7.6,
               alignment: 'center',
             },
             {
-              text: 'монтажный проем L*H (мм)',
+              text: langPdf['tableOfOpeningsOpening'],
               margin: 5,
               fontSize: 7.6,
               alignment: 'center',
             },
             {
-              text: 'толщина стены В (мм)',
+              text: langPdf['tableOfOpeningsWall'],
               margin: 5,
               fontSize: 7.6,
               alignment: 'center',
             },
             {
-              text: 'высота потолков(мм)',
+              text: langPdf['tableOfOpeningsCeiling'],
               margin: 5,
               fontSize: 7.6,
               alignment: 'center',
@@ -888,37 +888,37 @@ let dd = {
               margin: 5,
               fontSize: 9,
               alignment: 'center',
-              text: 'D1'
+              text: jsonPdf['tableOfOpeningsDesignation']
             },
             {
               margin: 5,
               fontSize: 9,
               alignment: 'center',
-              text: 'раздвижная перегородка'.toUpperCase()
+              text: jsonPdf['tableOfOpeningsConstruction'].toUpperCase()
             },
             {
               margin: 5,
               alignment: 'center',
               width: 134,
-              image: jsonPdf['openingScheme'],
+              image: jsonPdf['tableOfOpeningsScheme'],
             },
             {
               margin: 5,
               fontSize: 9,
               alignment: 'center',
-              text: '1800*2700'
+              text: jsonPdf['tableOfOpeningsOpening']
             },
             {
               margin: 5,
               fontSize: 9,
               alignment: 'center',
-              text: '200'
+              text: jsonPdf['tableOfOpeningsWall']
             },
             {
               margin: 5,
               fontSize: 9,
               alignment: 'center',
-              text: '2700'
+              text: jsonPdf['tableOfOpeningsCeiling']
             },
           ]
 
@@ -992,13 +992,15 @@ let dd = {
           alignment: 'center',
           fontSize: 9,
           bold: true,
-          text: '  Памятка счет - спецификация к проекту PDT-15/07/22-1839-0'},
+          text: langPdf['memoAccount'] + jsonPdf['invoiceSpecification']
+        },
         {
           alignment: 'center',
           fontSize: 9,
           bold: true,
           margin: [0, 9, 0, 0],
-          text: 'Конструкция   ' + 'D-6'}
+          text: langPdf['construction'] + jsonPdf['construction']
+        }
       ]
     },
     {
@@ -1011,7 +1013,7 @@ let dd = {
               alignment: 'center',
               fontSize: 9,
               bold: true,
-              text: 'Чертёж всего изделия'
+              text: langPdf['productDrawing']
             },
             {
               width: 310,
@@ -1027,7 +1029,9 @@ let dd = {
               alignment: 'center',
               fontSize: 9,
               bold: true,
-              text: 'Размер трека в сборе'},
+              text: lang['trackSize']
+
+            },
             {
               alignment: 'center',
               fontSize: 27,
@@ -1050,7 +1054,7 @@ let dd = {
                       border: [false, false, false, false],
 							        fillColor: '#eeeeee',
                       stack: [
-                        {text: 'Примечание:'},
+                        {text: langPdf['note']},
                         {
                           margin: [0, 6, 0, 0],
                           text: jsonPdf['item']['note']
@@ -1087,7 +1091,7 @@ let dd = {
       fontSize: 8,
       bold: true,
       margin: [0, 8, 0, 0],
-      text: 'Претензии по качеству конструкции принимаются только при  сохранении стикеров  с упаковки,соблюдении правил ее распоковки. в случае обнаружения фабричных, иных дефектов, необходимо зафиксировать на фото или видео и направить продавцу. '
+      text: langPdf['qualityClaims']
     },
     {
       columns: [
