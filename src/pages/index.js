@@ -1125,7 +1125,7 @@ let dd = {
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
-  pdfMake.createPdf(dd).open();
+  // pdfMake.createPdf(dd).open();
   const downloadPdf = document.querySelector('.download-pdf');
   const openPdf = document.querySelector('.open-pdf');
   const printPdf = document.querySelector('.print-pdf');
