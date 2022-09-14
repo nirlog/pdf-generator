@@ -1029,7 +1029,7 @@ let dd = {
               alignment: 'center',
               fontSize: 9,
               bold: true,
-              text: lang['trackSize']
+              text: langPdf['trackSize']
 
             },
             {
